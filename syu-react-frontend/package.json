@@ -1,0 +1,47 @@
+{
+  "name": "syu-react-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "test": "vitest --exclude \"e2e/**\" --exclude \"tests/integration/**\"",
+    "test:run": "vitest run --exclude \"e2e/**\" --exclude \"tests/integration/**\"",
+    "test:integration": "VITE_USE_EMULATOR=true VITE_FIREBASE_API_KEY=fake-api-key VITE_FIREBASE_PROJECT_ID=demo-syu vitest run tests/integration",
+    "test:e2e": "playwright test",
+    "preview": "vite preview",
+    "firebase:login": "firebase login",
+    "deploy:prod": "firebase deploy --only hosting",
+    "deploy:preview": "firebase hosting:channel:deploy feedback-v1",
+    "emulators:start": "PATH=\"/opt/homebrew/opt/openjdk@21/bin:$PATH\" firebase emulators:start --project demo-syu",
+    "emulators:seed": "node scripts/seedEmulator.mjs",
+    "check:assets": "node scripts/checkAssetRefs.mjs"
+  },
+  "dependencies": {
+    "firebase": "^12.15.0",
+    "lucide-react": "^1.23.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@tailwindcss/vite": "^4.3.2",
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.3",
+    "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "firebase-tools": "^15.22.4",
+    "jsdom": "^30.0.1",
+    "oxlint": "^1.71.0",
+    "tailwindcss": "^4.3.2",
+    "typescript": "~6.0.2",
+    "vite": "^8.1.1",
+    "vitest": "^4.1.10"
+  }
+}

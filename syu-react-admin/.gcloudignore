@@ -1,0 +1,29 @@
+# gcloud run deploy --source 업로드에서 제외할 것들.
+# .dockerignore와 역할이 다르다 — 이 파일은 Cloud Build로 "올라가는" 소스를,
+# .dockerignore는 컨테이너 이미지로 "복사되는" 파일을 거른다. gcloud는
+# .gcloudignore가 없으면 이 하위 폴더에 .gitignore도 없어서 venv와 비밀
+# 파일까지 통째로 업로드한다.
+#
+# 주의: Dockerfile은 여기서 제외하면 안 된다 — Cloud Build가 빌드에 쓴다.
+
+# 비밀 정보 — 업로드 금지 (배포는 Secret Manager 주입으로 대체)
+.streamlit/
+.env
+.env.*
+
+# 로컬 개발 환경
+venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# 런타임에 불필요한 테스트·운영 스크립트
+tests/
+requirements-dev.txt
+check_csv_sync.py
+read_sheet.py
+make_workspace.py
+seed_uat_accounts.py
+
+.gcloudignore
+.gitignore

@@ -1,0 +1,23 @@
+# 비밀 정보 — 이미지에 절대 포함 금지
+# (Dockerfile이 COPY . . 이므로 이 파일이 없으면 서비스 계정 키가 이미지에 박힌다)
+.streamlit/
+.env
+.env.*
+
+# 로컬 개발 환경
+venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# 테스트·운영 스크립트 (런타임 불필요 — 앱의 로컬 의존성은 csv_validation.py 하나뿐)
+tests/
+requirements-dev.txt
+check_csv_sync.py
+read_sheet.py
+make_workspace.py
+
+# 메타 파일
+.gitignore
+.dockerignore
+Dockerfile

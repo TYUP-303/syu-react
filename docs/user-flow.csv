@@ -1,0 +1,193 @@
+No.,날짜,범위,rev (버전),코드 (Mermaid)
+8,06-30(Tue),1. 랜딩페이지 및 로그인 관련,0.3.1,"flowchart LR
+
+%% 진입점
+  %% case 1. 랜딩페이지에서 접근
+  PAGE_landing([""[페이지] 랜딩페이지<br>(서비스 소개)""])
+  -- 터치 : [플로팅 버튼]<br>시작하기 -->
+  SG_LOGNIN_OR_SIGNUP
+
+  %% case 2. 로그인 필요 메뉴에 접근 시
+  CASE_need_login([""그 외 로그인 필요한<br>메뉴에 접근 시""])
+  -->
+  SG_LOGNIN_OR_SIGNUP
+
+%% 종료점
+  END([""(❌종료) 홈 탭으로 이동""])
+
+
+%% 메인 플로우
+subgraph SG_LOGNIN_OR_SIGNUP[""로그인/회원가입/계정 찾기""]
+  direction TB
+      %% 시작
+      START([""(✅시작) 모달 표시""]) --> MODAL_start
+    %% [모달] 로그인/회원가입 방식 선택
+    MODAL_start{""[모달] 로그인/회원가입<br>- 이메일로 로그인<br>- 구글로 계속하기<br>- 이메일로 가입<br>- 비밀번호 재설정""}
+
+      %% case 1. 이메일로 로그인
+      MODAL_start
+      -- 입력 : 이메일, 비밀번호<br>선택 : [버튼] 이메일로 계속하기 -->
+      CHECK_account_email{""[SYS] 체크 :<br>계정 유무""}
+
+      CHECK_account_email -- REACT 계정<br>있음 --> END
+      CHECK_account_email -- REACT 계정<br>없음 --> TEXT_warning_no_account[""[텍스트] 경고: 올바르지 않은 계정""] --> MODAL_start 
+
+      %% case 2. 구글로 계속하기
+      MODAL_start -- 선택 : [버튼]<br>구글로 계속하기 --> POPUP_google_social_login[""[팝업] 구글 소셜로그인""]
+      POPUP_google_social_login -- SYS: 구글 계정 연동 --> CHECK_account_google{""[SYS] 체크 :<br>계정 유무""}
+        
+        %% case 2-1. 기존 REACT 계정 있음
+        CHECK_account_google -- REACT 계정<br>있음 --> END
+
+        %% case 2-2. 기존 REACT 계정 없음
+        CHECK_account_google -- REACT 계정<br>없음 --> page_signup_react_agree_2
+          %% 구글 회원가입 절차
+          page_signup_react_agree_2[""[페이지] Step 1. 약관 동의""]
+          -->
+          PAGE_signup_complete_2[""[페이지] Step 2. 회원가입 완료""]
+          -->
+          END
+      
+      %% case 3. 이메일로 가입
+      MODAL_start -- 선택 : [텍스트 버튼] 이메일로 가입 --> PAGE_signup_react_agree_1
+        %% 이메일 회원가입 절차
+          PAGE_signup_react_agree_1[""[페이지] Step 1. 약관 동의""]
+          -->
+          PAGE_signup_enter_info[""[페이지] Step 2. 정보 입력""]
+          -->
+          PAGE_signup_verify_email[""[페이지] Step 3. 이메일 인증""]
+          -->
+          PAGE_signup_complete_1[""[페이지] Step 4. 회원가입 완료""]
+          -->
+          END
+
+      %% case 4. 비밀번호 재설정
+      MODAL_start -- 선택 : [텍스트 버튼]<br>비밀번호 재설정 --> PAGE_reset_password[""[페이지] 비밀번호 재설정""] --> MODAL_start    
+end"
+9,06-30(Tue),"2. 홈 탭, 캐릭터 생성 및 검사",0.3.0,"flowchart TD
+
+%% 진입점
+  START([""(✅시작) 홈""])
+
+%% 메인 플로우
+  START --> CHECK_character_generated{""[SYS] Step 1.<br>캐릭터 생성<br>완료 여부""}
+
+  CHECK_character_generated -- ""예"" --> CHECK_complete_test_adhd{""[SYS] Step 2.<br>검사 완료 여부<br>(ADHD 경향성)""}
+  CHECK_complete_test_adhd -- ""예"" --> CHECK_complete_test_stress{""[SYS] Step 3.<br> 검사 완료 여부<br>(스트레스 대처기제)""}
+  CHECK_complete_test_stress -- ""예"" --> END
+
+%% 서브 플로우
+
+  %% 캐릭터 생성
+  CHECK_character_generated -- ""아니오"" --> SG_SET_CHARACTER
+  subgraph SG_SET_CHARACTER[""캐릭터 생성""]
+      TEXT_character_set_needed[""[캐릭터 대사]<br>캐릭터 생성 필요""] -- ""클릭 : 캐릭터 대사"" --> PAGE_set_character[""[페이지] 캐릭터 정보 입력""]
+      PAGE_set_character --> MODAL_goto_next_1{""[모달] 캐릭터 생성 완료!<br>다음 단계 진행?""}
+  end
+  
+  %% 수정됨: '예' 선택 시 홈을 거치지 않고 바로 다음 검사 안내 페이지로 직행
+  SG_SET_CHARACTER -- ""(모달) 예"" --> PAGE_test_info_1
+  SG_SET_CHARACTER -- ""(모달) 아니오"" --> START
+
+  %% 검사 1 (ADHD 경향성)
+  CHECK_complete_test_adhd -- ""아니오"" --> TEXT_test_needed_1
+  subgraph SG_TEST_ADHD[""검사 1 (ADHD 경향성)""]
+      TEXT_test_needed_1[""[캐릭터 대사]<br>ADHD 테스트 필요""] -- ""클릭 : 캐릭터 대사"" --> PAGE_test_info_1[""[페이지] 검사 안내""]
+      PAGE_test_info_1 --> PAGE_test_execution_1[""[페이지] 검사 진행""]
+      PAGE_test_execution_1 --> PAGE_test_result_1[""[페이지] 검사 결과""]
+  end
+  
+  %% 수정됨: 다음 검사 진행 시 홈을 거치지 않고 바로 두 번째 검사로 직행
+  SG_TEST_ADHD -- ""선택 : [버튼] 다음 검사"" --> PAGE_test_info_2
+  SG_TEST_ADHD -- ""선택 : [버튼] X"" --> START
+
+  %% 검사 2 (스트레스 경향성)
+  CHECK_complete_test_stress -- ""아니오"" --> TEXT_test_needed_2
+  subgraph SG_TEST_STRESS[""검사 2 (스트레스 대처기제)""]
+      TEXT_test_needed_2[""[캐릭터 대사]<br>스트레스 테스트 필요""] -- ""클릭 : 캐릭터 대사"" --> PAGE_test_info_2[""[페이지] 검사 안내""]
+      PAGE_test_info_2 --> PAGE_test_execution_2[""[페이지] 검사 진행""]
+      PAGE_test_execution_2 --> PAGE_test_result_2[""[페이지] 검사 결과""]
+  end
+
+  %% 스트레스 검사 후속 연결
+  SG_TEST_STRESS -- ""선택 : [버튼] X"" --> START
+  SG_TEST_STRESS -- ""선택 : [버튼] 시나리오 둘러보기"" --> END
+
+%% 종료점
+  END([""(❌종료) 시나리오 탭""])"
+10,06-30(Tue),3. 시나리오 선택,0.3.0,"flowchart TD
+
+START([""(✅시작) 선택 : [탭] 시나리오""])
+-->
+CONTENT_list_scenario_theme[""[패널] 시나리오 영역 목록""]
+-- ""터치 : [리스트] 시나리오 영역""-->
+CONTENT_list_scenario_episode[""[패널] 에피소드 목록""]
+-- ""터치 : [리스트] 에피소드<br>터치 : [버튼] 플레이"" -->
+END([""(❌종료) 시나리오 진입""])
+
+CONTENT_list_scenario_episode
+-- ""터치 : [버튼] 뒤로가기"" -->
+CONTENT_list_scenario_theme"
+11,06-30(Tue),4. 시나리오 진행,0.3.0,"flowchart TD
+
+START([""(✅시작)<br>에피소드 선택<br>& 플레이""]) -->
+CONTENT_situation[""[비주얼 노벨 UI]<br>상황 제시""] -->
+
+CONTENT_angels{""[비주얼 노벨 UI]<br>전략 요정 3명 등장""}
+CONTENT_angels -- ""선택 : 전략 1<br>(수용)"" --> CONTENT_angel_detail
+CONTENT_angels -- ""선택 : 전략 2<br>(재평가)"" --> CONTENT_angel_detail
+CONTENT_angels -- ""선택 : 전략 3<br>(재초점)"" --> CONTENT_angel_detail
+
+%% 수정됨: 모달 대신 비주얼 노벨 UI 내에서의 전환으로 표기
+CONTENT_angel_detail[""[비주얼 노벨 UI]<br>전략 상세 보기""]
+CONTENT_angel_detail -- ""터치 : [버튼] 닫기"" --> CONTENT_angels
+CONTENT_angel_detail -- ""터치 : [버튼] 전략 선택"" --> CONTENT_is_it_helpful
+
+CONTENT_is_it_helpful{""[비주얼 노벨 UI]<br>전략 실행 후 대사""}
+CONTENT_is_it_helpful -- ""터치 : [버튼] 재선택"" --> CONTENT_angel_detail
+CONTENT_is_it_helpful -- ""선택 : [버튼] 도움 O"" --> CONTENT_select_helpful_reason
+CONTENT_is_it_helpful -- ""선택 : [버튼] 도움 X"" --> CONTENT_select_helpful_reason
+
+CONTENT_select_helpful_reason[""[비주얼 노벨 UI]<br>도움/비도움 세부 요인 선택""] -->
+CONTENT_episode_complete[""[비주얼 노벨 UI]<br>세부 요인 선택 후 대사""] -->
+
+MODAL_episode_complete{""[모달]<br>시나리오 완료<br>(회복되는 모습)""}
+MODAL_episode_complete -- ""선택 : [버튼] 그만하기"" --> END_1
+MODAL_episode_complete -- ""선택 : [버튼] 다음으로"" --> 
+
+CHECK_last_episode{""[SYS] 마지막<br>에피소드?""}
+
+%% 수정됨: 다음 에피소드 진행 시 브릿지 노드 추가 (루프 명확화)
+CHECK_last_episode -- ""아니오"" --> SYS_load_next_episode[""[SYS] 다음 에피소드<br>데이터 로딩 및 준비""] --> CONTENT_situation
+
+CHECK_last_episode -- ""예"" --> CHECK_first_theme_complete{""[SYS] 영역<br>완료 처음?""} 
+
+CHECK_first_theme_complete -- ""아니오"" --> END_2
+CHECK_first_theme_complete -- ""예"" --> 
+
+PAGE_report_first_theme_complete[""[페이지] 최초 1회 유형 보고서""] -- ""선택 : [버튼] 나가기"" -->
+MODAL_diary_unlock[""[모달] 회복일기 해금""] --> END_2
+
+END_1([""(❌종료) 시나리오 탭 - 에피소드 목록 패널""])
+END_2([""(❌종료) 회복일기 탭""])
+
+MYPAGE([""마이페이지""]) --> PAGE_report_first_theme_complete"
+12,06-30(Tue),5. 회복일기,0.3.0,"flowchart TD
+
+START([""(✅시작)<br>회복일기 탭""]) -->
+CHECK_complete_all_theme{""[SYS] 모든 영역<br>완료?""}
+
+CHECK_complete_all_theme -- ""예 : 히든 일기 활성화<br>(종합 인사이트) "" --> CONTENT_diary_list
+CHECK_complete_all_theme -- ""아니오 : 히든 일기 비활성화<br>(???로 표시) "" --> CONTENT_diary_list
+
+CONTENT_diary_list{""[패널] 회복 일기 리스트""}
+CONTENT_diary_list -- ""선택 : [리스트]<br>영역별 회복일기<br>(완료 영역) ""--> CONTENT_diary_detail_normal[""[패널] 회복 일기 상세""] -- ""선택 : [버튼] 뒤로가기"" --> CONTENT_diary_list
+CONTENT_diary_list -- ""선택 : [리스트]<br>영역별 회복일기<br>(미완료 영역) "" --> MODAL_diary_unlock_condition[""[모달] 회복일기<br>해금 조건 안내""]
+CONTENT_diary_list -- ""선택 : [리스트]<br>히든 회복일기<br>(활성화) ""--> CONTENT_diary_detail_hidden[""[패널] 종합 인사이트""] -- ""선택 : [버튼] 뒤로가기"" --> CONTENT_diary_list 
+CONTENT_diary_list -- ""선택 : [리스트]<br>히든 회복일기<br>(비활성화) ""--> MODAL_diary_hidden_unlock_condition[""[모달] 종합 인사이트<br>해금 조건 안내""]
+
+CONTENT_diary_detail_hidden -- ""선택 : [버튼]<br>최종 엔딩메시지 보기"" -->
+PAGE_ending[""[페이지] 최종 엔딩""] -->
+END([""(❌종료) 메인화면""])
+
+MYPAGE([마이페이지]) --> PAGE_ending"

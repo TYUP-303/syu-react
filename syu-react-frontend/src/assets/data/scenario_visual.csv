@@ -1,0 +1,121 @@
+﻿NO,DOMAIN,REACTION_TYPE,TITLE,BG1,CHAR1_1,CHAR1_2,CHAR1_3,BG2,CHAR2_1,CHAR2_2,CHAR2_3,BG3,CHAR3_1,CHAR3_2,CHAR3_3,BG4,CHAR4_1,CHAR4_2,CHAR4_3
+1,직장1,인지,회의 중 실수 지적,meeting_room.png,baeksul_f_worried.png,,colleague_default.png,meeting_room.png,baeksul_f_sad.png,,boss_stern.png,meeting_room.png,,baeksul_f_worried.png,,street_night.png,baeksul_f_worried.png,,
+1,직장1,정서,회의 중 실수 지적,meeting_room.png,baeksul_f_worried.png,,colleague_default.png,meeting_room.png,baeksul_f_sad.png,,boss_stern.png,meeting_room.png,,baeksul_f_sad.png,,office.png,,baeksul_f_sad.png,colleague_default.png
+1,직장1,행동,회의 중 실수 지적,meeting_room.png,baeksul_f_worried.png,,colleague_default.png,meeting_room.png,baeksul_f_sad.png,,boss_stern.png,meeting_room.png,,baeksul_f_worried.png,,corridor.png,baeksul_f_worried.png,,
+2,직장2,인지,중요한 업무처리를 잊음,office.png,baeksul_f_default.png,,colleague_default.png,office.png,baeksul_f_worried.png,,colleague_troubled.png,office.png,,baeksul_f_worried.png,,office.png,,baeksul_f_sad.png,
+2,직장2,정서,중요한 업무처리를 잊음,office.png,baeksul_f_default.png,,colleague_default.png,office.png,baeksul_f_worried.png,,colleague_troubled.png,office.png,,baeksul_f_sad.png,,office.png,baeksul_f_sad.png,,colleague_default.png
+2,직장2,행동,중요한 업무처리를 잊음,office.png,baeksul_f_default.png,,colleague_default.png,office.png,baeksul_f_worried.png,,colleague_troubled.png,office.png,baeksul_f_worried.png,,colleague_default.png,office.png,,baeksul_f_worried.png,
+3,직장3,인지,여러 업무가 한꺼번에 주어짐,office.png,baeksul_f_default.png,,boss_default.png,office.png,,baeksul_f_worried.png,,office.png,,baeksul_f_worried.png,,office.png,,baeksul_f_worried.png,
+3,직장3,정서,여러 업무가 한꺼번에 주어짐,office.png,baeksul_f_default.png,,boss_default.png,office.png,,baeksul_f_worried.png,,office.png,,baeksul_f_worried.png,,office.png,baeksul_f_worried.png,,colleague_troubled.png
+3,직장3,행동,여러 업무가 한꺼번에 주어짐,office.png,baeksul_f_default.png,,boss_default.png,office.png,,baeksul_f_worried.png,,office.png,,baeksul_f_default.png,,office.png,,baeksul_f_worried.png,
+4,직장4,인지,업무 지시를 일부 놓침,office.png,baeksul_f_default.png,,boss_default.png,office.png,,baeksul_f_worried.png,,office.png,,baeksul_f_worried.png,,office.png,,baeksul_f_sad.png,
+4,직장4,정서,업무 지시를 일부 놓침,office.png,baeksul_f_default.png,,boss_default.png,office.png,,baeksul_f_worried.png,,office.png,,baeksul_f_worried.png,,office.png,baeksul_f_sad.png,,boss_default.png
+4,직장4,행동,업무 지시를 일부 놓침,office.png,baeksul_f_default.png,,boss_default.png,office.png,,baeksul_f_worried.png,,office.png,baeksul_f_worried.png,,boss_stern.png,office.png,,baeksul_f_worried.png,
+5,직장5,인지,회의내용이 기억나지 않고 주의가 지나치게 분산,meeting_room.png,colleague_default.png,baeksul_f_default.png,boss_default.png,office.png,,baeksul_f_worried.png,,office.png,,baeksul_f_worried.png,,office.png,,baeksul_f_sad.png,
+5,직장5,정서,회의내용이 기억나지 않고 주의가 지나치게 분산,meeting_room.png,colleague_default.png,baeksul_f_default.png,boss_default.png,office.png,,baeksul_f_worried.png,,office.png,,baeksul_f_sad.png,,office.png,baeksul_f_worried.png,,colleague_troubled.png
+5,직장5,행동,회의내용이 기억나지 않고 주의가 지나치게 분산,meeting_room.png,colleague_default.png,baeksul_f_default.png,boss_default.png,office.png,,baeksul_f_worried.png,,office.png,baeksul_f_default.png,,colleague_default.png,office.png,baeksul_f_worried.png,,
+6,직장6,인지,동료와 함께하는 작업에서 일정 숙지 착오,office.png,baeksul_f_default.png,,colleague_default.png,office.png,baeksul_f_worried.png,,colleague_troubled.png,office.png,,baeksul_f_worried.png,,office.png,,baeksul_f_sad.png,
+6,직장6,정서,동료와 함께하는 작업에서 일정 숙지 착오,office.png,baeksul_f_default.png,,colleague_default.png,office.png,baeksul_f_worried.png,,colleague_troubled.png,office.png,baeksul_f_sad.png,,colleague_default.png,office.png,baeksul_f_sad.png,,colleague_troubled.png
+6,직장6,행동,동료와 함께하는 작업에서 일정 숙지 착오,office.png,baeksul_f_default.png,,colleague_default.png,office.png,baeksul_f_worried.png,,colleague_troubled.png,office.png,baeksul_f_worried.png,,,office.png,baeksul_f_worried.png,,colleague_troubled.png
+7,직장7,인지,발표 중 주의가 지나치게 분산되고 감각이 과도하게 각성,meeting_room.png,colleague_default.png,baeksul_f_worried.png,boss_default.png,meeting_room.png,colleague_default.png,baeksul_f_worried.png,boss_default.png,meeting_room.png,,baeksul_f_worried.png,,meeting_room.png,,baeksul_f_worried.png,
+7,직장7,정서,발표 중 주의가 지나치게 분산되고 감각이 과도하게 각성,meeting_room.png,colleague_default.png,baeksul_f_worried.png,boss_default.png,meeting_room.png,colleague_default.png,baeksul_f_worried.png,boss_default.png,meeting_room.png,colleague_default.png,baeksul_f_worried.png,boss_default.png,meeting_room.png,,baeksul_f_sad.png,colleague_default.png
+7,직장7,행동,발표 중 주의가 지나치게 분산되고 감각이 과도하게 각성,meeting_room.png,colleague_default.png,baeksul_f_worried.png,boss_default.png,meeting_room.png,colleague_default.png,baeksul_f_worried.png,boss_default.png,meeting_room.png,,baeksul_f_worried.png,,meeting_room.png,baeksul_f_worried.png,,
+8,직장8,인지,정리되지 않은 파일 형식과 글로 인한 지적,office.png,,baeksul_f_default.png,,office.png,baeksul_f_worried.png,,boss_default.png,office.png,baeksul_f_worried.png,,,office.png,,baeksul_f_sad.png,
+8,직장8,정서,정리되지 않은 파일 형식과 글로 인한 지적,office.png,,baeksul_f_default.png,,office.png,baeksul_f_worried.png,,boss_default.png,office.png,,baeksul_f_sad.png,boss_default.png,office.png,baeksul_f_sad.png,,boss_stern.png
+8,직장8,행동,정리되지 않은 파일 형식과 글로 인한 지적,office.png,,baeksul_f_default.png,,office.png,baeksul_f_worried.png,,boss_default.png,office.png,baeksul_f_worried.png,,,office.png,,baeksul_f_sad.png,
+9,직장9,인지,오탈자와 오기에 대해 반복적인 지적,office.png,,baeksul_f_default.png,,office.png,baeksul_f_worried.png,,boss_stern.png,office.png,,baeksul_f_worried.png,,office.png,,baeksul_f_sad.png,
+9,직장9,정서,오탈자와 오기에 대해 반복적인 지적,office.png,,baeksul_f_default.png,,office.png,baeksul_f_worried.png,,boss_stern.png,office.png,,baeksul_f_sad.png,boss_stern.png,office.png,,baeksul_f_sad.png,boss_stern.png
+9,직장9,행동,오탈자와 오기에 대해 반복적인 지적,office.png,,baeksul_f_default.png,,office.png,baeksul_f_worried.png,,boss_stern.png,office.png,,baeksul_f_worried.png,,office.png,,baeksul_f_worried.png,
+10,직장10,인지,"회의 도중 상대의 말을 끊고, 아이디어를 말하는 나…",meeting_room.png,baeksul_f_default.png,,colleague_default.png,meeting_room.png,baeksul_f_sad.png,,boss_default.png,office.png,baeksul_f_worried.png,,,office.png,,baeksul_f_sad.png,
+10,직장10,정서,"회의 도중 상대의 말을 끊고, 아이디어를 말하는 나…",meeting_room.png,baeksul_f_default.png,,colleague_default.png,meeting_room.png,baeksul_f_sad.png,,boss_default.png,office.png,baeksul_f_sad.png,,colleague_troubled.png,street_night.png,,baeksul_f_sad.png,
+10,직장10,행동,"회의 도중 상대의 말을 끊고, 아이디어를 말하는 나…",meeting_room.png,baeksul_f_default.png,,colleague_default.png,meeting_room.png,baeksul_f_sad.png,,boss_default.png,meeting_room.png,,baeksul_f_worried.png,,meeting_room.png,baeksul_f_worried.png,,colleague_default.png
+11,취업준비1,인지,계속 떨어지는 면접,interview_room.png,,baeksul_f_sad.png,,interview_room.png,,baeksul_f_worried.png,,interview_room.png,,baeksul_f_worried.png,,my_room.png,baeksul_f_worried.png,,
+11,취업준비1,정서,계속 떨어지는 면접,interview_room.png,,baeksul_f_sad.png,,interview_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_sad.png,
+11,취업준비1,행동,계속 떨어지는 면접,interview_room.png,,baeksul_f_sad.png,,interview_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+12,취업준비2,인지,"취업 준비를 하면서 비교되는 타인의 환경, 위치",my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+12,취업준비2,정서,"취업 준비를 하면서 비교되는 타인의 환경, 위치",my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,baeksul_f_sad.png,,,my_room.png,,baeksul_f_sad.png,
+12,취업준비2,행동,"취업 준비를 하면서 비교되는 타인의 환경, 위치",my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_sad.png,
+13,취업준비3,인지,"막막한 자격증 갖추기, 컴활이 뭐길래?",library.png,,baeksul_f_worried.png,,library.png,,baeksul_f_worried.png,,library.png,,baeksul_f_worried.png,,library.png,,baeksul_f_worried.png,
+13,취업준비3,정서,"막막한 자격증 갖추기, 컴활이 뭐길래?",library.png,,baeksul_f_worried.png,,library.png,,baeksul_f_worried.png,,library.png,,baeksul_f_worried.png,,library.png,,baeksul_f_worried.png,
+13,취업준비3,행동,"막막한 자격증 갖추기, 컴활이 뭐길래?",library.png,,baeksul_f_worried.png,,library.png,,baeksul_f_worried.png,,library.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+14,취업준비4,인지,경제적 독립을 하지 못한 못미더움,library.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+14,취업준비4,정서,경제적 독립을 하지 못한 못미더움,library.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,baeksul_f_sad.png,,,my_room.png,,baeksul_f_sad.png,
+14,취업준비4,행동,경제적 독립을 하지 못한 못미더움,library.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_default.png,
+15,취업준비5,인지,면접결과를 물어보는 가족 및 지인들에 대한 부담감,living_room.png,baeksul_f_default.png,,family_default.png,living_room.png,baeksul_f_sad.png,,family_default.png,living_room.png,baeksul_f_worried.png,,family_default.png,living_room.png,baeksul_f_sad.png,,family_default.png
+15,취업준비5,정서,면접결과를 물어보는 가족 및 지인들에 대한 부담감,living_room.png,baeksul_f_default.png,,family_default.png,living_room.png,baeksul_f_sad.png,,family_default.png,living_room.png,baeksul_f_sad.png,,family_default.png,living_room.png,baeksul_f_sad.png,,family_default.png
+15,취업준비5,행동,면접결과를 물어보는 가족 및 지인들에 대한 부담감,living_room.png,baeksul_f_default.png,,family_default.png,living_room.png,baeksul_f_sad.png,,family_default.png,living_room.png,baeksul_f_worried.png,,family_default.png,living_room.png,baeksul_f_sad.png,,family_default.png
+16,취업준비6,인지,"취업을 같이 준비한 친구는 취업 성공, 괜히 드는 불편감",street_day.png,baeksul_f_default.png,,friend_happy.png,street_day.png,baeksul_f_sad.png,,friend_default.png,my_room.png,baeksul_f_worried.png,,,my_room.png,baeksul_f_worried.png,,
+16,취업준비6,정서,"취업을 같이 준비한 친구는 취업 성공, 괜히 드는 불편감",street_day.png,baeksul_f_default.png,,friend_happy.png,street_day.png,baeksul_f_sad.png,,friend_default.png,my_room.png,baeksul_f_sad.png,,,my_room.png,,baeksul_f_sad.png,
+16,취업준비6,행동,"취업을 같이 준비한 친구는 취업 성공, 괜히 드는 불편감",street_day.png,baeksul_f_default.png,,friend_happy.png,street_day.png,baeksul_f_sad.png,,friend_default.png,my_room.png,baeksul_f_worried.png,,,my_room.png,,baeksul_f_worried.png,
+17,취업준비7,인지,자격증 공부가 늘지 않는 백설,library.png,,baeksul_f_sad.png,,library.png,,baeksul_f_worried.png,,library.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+17,취업준비7,정서,자격증 공부가 늘지 않는 백설,library.png,,baeksul_f_sad.png,,library.png,,baeksul_f_worried.png,,library.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_sad.png,
+17,취업준비7,행동,자격증 공부가 늘지 않는 백설,library.png,,baeksul_f_sad.png,,library.png,,baeksul_f_worried.png,,library.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+18,취업준비8,인지,자기소개서를 작성하지만 마음에 안드는 나,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+18,취업준비8,정서,자기소개서를 작성하지만 마음에 안드는 나,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_sad.png,
+18,취업준비8,행동,자기소개서를 작성하지만 마음에 안드는 나,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,baeksul_f_worried.png,,
+19,취업준비9,인지,나는 어느 회사에 적합한 것일까?,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+19,취업준비9,정서,나는 어느 회사에 적합한 것일까?,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_sad.png,
+19,취업준비9,행동,나는 어느 회사에 적합한 것일까?,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+20,취업준비10,인지,"지루한 취업 준비 과정, 이겨내기!",my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+20,취업준비10,정서,"지루한 취업 준비 과정, 이겨내기!",my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,baeksul_f_sad.png,,friend_default.png
+20,취업준비10,행동,"지루한 취업 준비 과정, 이겨내기!",my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+21,연인1,인지,"연락이 없는 연인, 내가 예민한걸까?",my_room.png,baeksul_f_default.png,,,my_room.png,,baeksul_f_worried.png,,my_room.png,baeksul_f_worried.png,,,my_room.png,,baeksul_f_worried.png,
+21,연인1,정서,"연락이 없는 연인, 내가 예민한걸까?",my_room.png,baeksul_f_default.png,,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,baeksul_f_sad.png,,
+21,연인1,행동,"연락이 없는 연인, 내가 예민한걸까?",my_room.png,baeksul_f_default.png,,,my_room.png,,baeksul_f_worried.png,,my_room.png,baeksul_f_worried.png,,,my_room.png,,baeksul_f_worried.png,
+22,연인2,인지,"""그냥 밥 먹는거야""라는 말이 편하지 않을 때",my_room.png,baeksul_f_worried.png,,lover_default.png,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,baeksul_f_worried.png,,
+22,연인2,정서,"""그냥 밥 먹는거야""라는 말이 편하지 않을 때",my_room.png,baeksul_f_worried.png,,lover_default.png,my_room.png,,baeksul_f_worried.png,,my_room.png,baeksul_f_sad.png,,lover_tired.png,my_room.png,baeksul_f_worried.png,,
+22,연인2,행동,"""그냥 밥 먹는거야""라는 말이 편하지 않을 때",my_room.png,baeksul_f_worried.png,,lover_default.png,my_room.png,,baeksul_f_worried.png,,my_room.png,baeksul_f_worried.png,,,my_room.png,baeksul_f_worried.png,,
+23,연인3,인지,"이성친구와 술자리, 어디까지 괜찮아야 할까?",my_room.png,baeksul_f_default.png,,lover_default.png,my_room.png,,baeksul_f_worried.png,lover_default.png,my_room.png,baeksul_f_worried.png,,,my_room.png,,baeksul_f_worried.png,
+23,연인3,정서,"이성친구와 술자리, 어디까지 괜찮아야 할까?",my_room.png,baeksul_f_default.png,,lover_default.png,my_room.png,,baeksul_f_worried.png,lover_default.png,my_room.png,,baeksul_f_worried.png,,my_room.png,baeksul_f_sad.png,,
+23,연인3,행동,"이성친구와 술자리, 어디까지 괜찮아야 할까?",my_room.png,baeksul_f_default.png,,lover_default.png,my_room.png,,baeksul_f_worried.png,lover_default.png,my_room.png,baeksul_f_worried.png,,,my_room.png,,baeksul_f_worried.png,
+24,연인4,인지,내 마음을 설명하는데 왜 자꾸 논리로 따질까?,my_room.png,baeksul_f_sad.png,,lover_tired.png,my_room.png,baeksul_f_worried.png,,lover_tired.png,my_room.png,baeksul_f_worried.png,,lover_tired.png,my_room.png,,baeksul_f_sad.png,lover_tired.png
+24,연인4,정서,내 마음을 설명하는데 왜 자꾸 논리로 따질까?,my_room.png,baeksul_f_sad.png,,lover_tired.png,my_room.png,baeksul_f_worried.png,,lover_tired.png,my_room.png,,baeksul_f_sad.png,lover_tired.png,my_room.png,,baeksul_f_sad.png,lover_tired.png
+24,연인4,행동,내 마음을 설명하는데 왜 자꾸 논리로 따질까?,my_room.png,baeksul_f_sad.png,,lover_tired.png,my_room.png,baeksul_f_worried.png,,lover_tired.png,my_room.png,,baeksul_f_worried.png,lover_tired.png,my_room.png,baeksul_f_worried.png,,lover_default.png
+25,연인5,인지,"편해진 건지, 나를 덜 신경 쓰는 건지",cafe.png,baeksul_f_default.png,,lover_default.png,cafe.png,,baeksul_f_sad.png,lover_default.png,cafe.png,baeksul_f_worried.png,,lover_default.png,cafe.png,baeksul_f_sad.png,,lover_default.png
+25,연인5,정서,"편해진 건지, 나를 덜 신경 쓰는 건지",cafe.png,baeksul_f_default.png,,lover_default.png,cafe.png,,baeksul_f_sad.png,lover_default.png,cafe.png,baeksul_f_sad.png,,lover_tired.png,cafe.png,baeksul_f_sad.png,,lover_default.png
+25,연인5,행동,"편해진 건지, 나를 덜 신경 쓰는 건지",cafe.png,baeksul_f_default.png,,lover_default.png,cafe.png,,baeksul_f_sad.png,lover_default.png,cafe.png,baeksul_f_worried.png,,lover_default.png,cafe.png,baeksul_f_sad.png,,lover_default.png
+26,연인6,인지,내가 너무 기대고 있는 걸까?,my_room.png,baeksul_f_default.png,,,my_room.png,baeksul_f_sad.png,,,my_room.png,baeksul_f_worried.png,,,my_room.png,baeksul_f_worried.png,,
+26,연인6,정서,내가 너무 기대고 있는 걸까?,my_room.png,baeksul_f_default.png,,,my_room.png,baeksul_f_sad.png,,,my_room.png,,baeksul_f_sad.png,,my_room.png,baeksul_f_sad.png,,lover_tired.png
+26,연인6,행동,내가 너무 기대고 있는 걸까?,my_room.png,baeksul_f_default.png,,,my_room.png,baeksul_f_sad.png,,,my_room.png,baeksul_f_worried.png,,,my_room.png,,baeksul_f_worried.png,
+27,연인7,인지,나만 보고 싶은 연애 같을 때,cafe.png,baeksul_f_default.png,,lover_default.png,cafe.png,baeksul_f_sad.png,,lover_default.png,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+27,연인7,정서,나만 보고 싶은 연애 같을 때,cafe.png,baeksul_f_default.png,,lover_default.png,cafe.png,baeksul_f_sad.png,,lover_default.png,cafe.png,,baeksul_f_sad.png,,cafe.png,baeksul_f_sad.png,,lover_tired.png
+27,연인7,행동,나만 보고 싶은 연애 같을 때,cafe.png,baeksul_f_default.png,,lover_default.png,my_room.png,baeksul_f_sad.png,,lover_default.png,my_room.png,baeksul_f_worried.png,,,my_room.png,,baeksul_f_worried.png,
+28,연인8,인지,피곤하다는 말 뒤에 자꾸 멀어지는 느낌,my_room.png,baeksul_f_default.png,,,my_room.png,,baeksul_f_sad.png,,my_room.png,baeksul_f_worried.png,,,my_room.png,,baeksul_f_worried.png,
+28,연인8,정서,피곤하다는 말 뒤에 자꾸 멀어지는 느낌,my_room.png,baeksul_f_default.png,,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,baeksul_f_sad.png,,lover_tired.png
+28,연인8,행동,피곤하다는 말 뒤에 자꾸 멀어지는 느낌,my_room.png,baeksul_f_default.png,,,my_room.png,,baeksul_f_sad.png,,my_room.png,baeksul_f_worried.png,,,my_room.png,baeksul_f_worried.png,,
+29,연인9,인지,"주말마다 잠만 자고 싶은 연인, 서운한 내가 속 좁은걸까?",my_room.png,baeksul_f_default.png,,lover_default.png,my_room.png,baeksul_f_sad.png,,lover_tired.png,my_room.png,,baeksul_f_worried.png,,my_room.png,baeksul_f_worried.png,,
+29,연인9,정서,"주말마다 잠만 자고 싶은 연인, 서운한 내가 속 좁은걸까?",my_room.png,baeksul_f_default.png,,lover_default.png,my_room.png,baeksul_f_sad.png,,lover_tired.png,my_room.png,,baeksul_f_sad.png,,my_room.png,baeksul_f_sad.png,,lover_default.png
+29,연인9,행동,"주말마다 잠만 자고 싶은 연인, 서운한 내가 속 좁은걸까?",my_room.png,baeksul_f_default.png,,lover_default.png,my_room.png,baeksul_f_sad.png,,lover_tired.png,my_room.png,,baeksul_f_worried.png,,my_room.png,baeksul_f_sad.png,,
+30,연인10,인지,"기념일을 가볍게 넘기는 연인, 나만 의미를 크게 두는 걸까?",my_room.png,baeksul_f_default.png,,lover_default.png,my_room.png,,baeksul_f_sad.png,,my_room.png,baeksul_f_worried.png,,,my_room.png,,baeksul_f_sad.png,
+30,연인10,정서,"기념일을 가볍게 넘기는 연인, 나만 의미를 크게 두는 걸까?",my_room.png,baeksul_f_default.png,,lover_default.png,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,baeksul_f_sad.png,,lover_tired.png
+30,연인10,행동,"기념일을 가볍게 넘기는 연인, 나만 의미를 크게 두는 걸까?",my_room.png,baeksul_f_default.png,,lover_default.png,my_room.png,,baeksul_f_sad.png,,my_room.png,baeksul_f_worried.png,,,my_room.png,baeksul_f_sad.png,,
+31,일상1,인지,할 일을 하려고 했는데 하루가 사라진 날,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+31,일상1,정서,할 일을 하려고 했는데 하루가 사라진 날,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_sad.png,
+31,일상1,행동,할 일을 하려고 했는데 하루가 사라진 날,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_worried.png,
+32,일상2,인지,약속 시간은 아는데 항상 늦는 나,my_room.png,,baeksul_f_worried.png,,cafe.png,,baeksul_f_sad.png,friend_default.png,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+32,일상2,정서,약속 시간은 아는데 항상 늦는 나,my_room.png,,baeksul_f_worried.png,,cafe.png,,baeksul_f_sad.png,friend_default.png,cafe.png,,baeksul_f_sad.png,friend_default.png,cafe.png,,baeksul_f_sad.png,friend_default.png
+32,일상2,행동,약속 시간은 아는데 항상 늦는 나,my_room.png,,baeksul_f_worried.png,,cafe.png,,baeksul_f_sad.png,friend_default.png,cafe.png,,baeksul_f_worried.png,,cafe.png,,baeksul_f_worried.png,friend_default.png
+33,일상3,인지,방 정리를 시작했는데 더 어지러워진 날,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+33,일상3,정서,방 정리를 시작했는데 더 어지러워진 날,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_sad.png,
+33,일상3,행동,방 정리를 시작했는데 더 어지러워진 날,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_default.png,
+34,일상4,인지,중요한 물건을 또 잃어버렸을 때,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+34,일상4,정서,중요한 물건을 또 잃어버렸을 때,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+34,일상4,행동,중요한 물건을 또 잃어버렸을 때,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_worried.png,
+35,일상5,인지,돈을 어디에 썼는지 모르겠는 날,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+35,일상5,정서,돈을 어디에 썼는지 모르겠는 날,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_sad.png,
+35,일상5,행동,돈을 어디에 썼는지 모르겠는 날,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_default.png,
+36,일상6,인지,"빽빽한 일정표, 열심히 살려던 하루가 버거울 때",cafe.png,baeksul_f_default.png,,friend_default.png,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+36,일상6,정서,"빽빽한 일정표, 열심히 살려던 하루가 버거울 때",cafe.png,baeksul_f_default.png,,friend_default.png,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_sad.png,
+36,일상6,행동,"빽빽한 일정표, 열심히 살려던 하루가 버거울 때",cafe.png,baeksul_f_default.png,,friend_default.png,my_room.png,,baeksul_f_worried.png,,street_day.png,,baeksul_f_default.png,,street_day.png,baeksul_f_worried.png,,
+37,일상7,인지,"갖고 싶은 건, 지금 사야할 것 같은 마음",my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_default.png,
+37,일상7,정서,"갖고 싶은 건, 지금 사야할 것 같은 마음",my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_sad.png,
+37,일상7,행동,"갖고 싶은 건, 지금 사야할 것 같은 마음",my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_default.png,
+38,일상8,인지,"하고 싶은 머리, 오늘 당장 바꾸자",hair_salon.png,baeksul_f_default.png,,hairdresser_default.png,hair_salon.png,,baeksul_f_worried.png,,hair_salon.png,baeksul_f_default.png,,hairdresser_talking.png,my_room.png,,baeksul_f_sad.png,
+38,일상8,정서,"하고 싶은 머리, 오늘 당장 바꾸자",hair_salon.png,baeksul_f_default.png,,hairdresser_default.png,hair_salon.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_sad.png,
+38,일상8,행동,"하고 싶은 머리, 오늘 당장 바꾸자",hair_salon.png,baeksul_f_default.png,,hairdresser_default.png,hair_salon.png,,baeksul_f_worried.png,hairdresser_default.png,hair_salon.png,baeksul_f_worried.png,,hairdresser_default.png,my_room.png,,baeksul_f_worried.png,
+39,일상9,인지,비가 그치면 사라지는 우산,street_day.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_sad.png,
+39,일상9,정서,비가 그치면 사라지는 우산,street_day.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_sad.png,,cafe.png,,baeksul_f_sad.png,friend_default.png
+39,일상9,행동,비가 그치면 사라지는 우산,street_day.png,,baeksul_f_default.png,,street_day.png,,baeksul_f_sad.png,,street_night.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_default.png,
+40,일상10,인지,"잠깐만 보려던 휴대폰, 어느새 사라진 시간",my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
+40,일상10,정서,"잠깐만 보려던 휴대폰, 어느새 사라진 시간",my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_sad.png,,my_room.png,,baeksul_f_worried.png,
+40,일상10,행동,"잠깐만 보려던 휴대폰, 어느새 사라진 시간",my_room.png,,baeksul_f_default.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,,my_room.png,,baeksul_f_worried.png,
