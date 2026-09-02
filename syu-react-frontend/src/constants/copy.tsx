@@ -491,6 +491,7 @@ export const COPY = {
     emailLoginFailed: '이메일 로그인 중 오류가 발생했습니다.',
     signupFailed: '회원가입 중 오류가 발생했습니다.',
     verifyCheckFailed: '인증 상태 확인 중 오류가 발생했습니다.',
+    verifyResendFailed: '인증 메일 재발송 중 오류가 발생했습니다.',
     passwordResetFailed: '비밀번호 재설정 이메일 전송에 실패했습니다.',
     // 가입 중 인증 메일만 받고 이탈한 계정의 재로그인을 막을 때 노출된다.
     emailNotVerified: '이메일 인증이 완료되지 않았습니다. 메일함에서 인증 후 다시 로그인해 주세요.',
@@ -687,6 +688,9 @@ export const COPY = {
   signup: {
     verifyIncomplete: '아직 이메일 인증이 완료되지 않았습니다. 메일함의 링크를 확인해 주세요.',
     failed: '회원가입에 실패했습니다. 이미 존재하는 이메일이거나 형식 오류일 수 있습니다.',
+    // 인증 메일 재발송 (Step 3). 최초 발송이 실패했거나 메일이 오지 않았을 때의 창구.
+    resendButton: '인증 메일 다시 받기',
+    resendSuccess: '인증 메일을 다시 보냈습니다. 메일함(스팸함 포함)을 확인해 주세요.',
 
     // ── 가입 중단 확인 (2026-08-08 확정) ──
     // 계정이 **이미 만들어진 뒤**(Step 2 완료 → 인증 대기 Step 3)의 ✕만

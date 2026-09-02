@@ -10,6 +10,9 @@ import { auth, signInWithGoogle, signOutUser, syncUserToFirestore } from '../api
 import { useConsentStore } from './useConsentStore';
 import { COPY } from '../constants/copy';
 import { rememberLastLoginMethod } from '../utils/lastLoginMethod';
+// 백엔드가 없어 실패가 서버에 남지 않으므로, 가입/재발송 실패를 GA4 이벤트로
+// 남겨 시각별 진단을 가능하게 한다 (api/analytics.ts의 배경 주석 참조).
+import { trackEvent, errorCode } from '../api/analytics';
 
 // ⚠️ 의도된 예외: 이 스토어만 공용 플래그(IS_MOCK_MODE, src/api/env.ts)를 따르지 않습니다.
 //
@@ -104,6 +107,14 @@ interface AuthState {
   ) => Promise<boolean>;
   /** 비밀번호 재설정 이메일을 발송합니다 */
   resetPassword: (email: string) => Promise<boolean>;
+  /**
+   * 가입 중인 계정에 인증 메일을 다시 발송합니다 (Step 3의 재발송 창구).
+   *
+   * 최초 발송이 실패했거나(rate limit·인앱 브라우저 네트워크) 유저가 메일을
+   * 받지 못했을 때 복구 수단입니다. 계정은 이미 만들어져 있고 Firebase 세션도
+   * 살아 있으므로 auth.currentUser로 보냅니다.
+   */
+  resendVerificationEmail: () => Promise<boolean>;
   /** 현재 로그인된 유저의 이메일 인증 상태를 확인하고 갱신합니다 */
   checkEmailVerified: () => Promise<boolean>;
   /** 로그아웃을 실행합니다 */
@@ -227,7 +238,21 @@ export const useAuthStore = create<AuthState>()(
                 .saveConsent(credential.user.uid, { marketingAgreed: consent.marketingAgreed });
             }
 
-            await sendEmailVerification(credential.user);
+            // 인증 메일 발송은 **계정 생성과 분리된 실패 지점**이다. 계정은 위에서
+            // 이미 만들어졌으므로, 여기서 던진 예외를 바깥 catch로 흘려보내면 가입
+            // 전체가 '실패'로 되돌아가면서도 계정은 그대로 남는다 — 화면엔 실패,
+            // 서버엔 고아 계정이라는 모순(2026-08-30 김영원 선생님 신고의 정체).
+            // 발송 실패는 Step 3의 재발송(resendVerificationEmail)으로 복구하므로
+            // 여기서 삼키고 가입 자체는 성사시킨다.
+            try {
+              await sendEmailVerification(credential.user);
+            } catch (mailErr) {
+              // 서버에 실패 로그가 남지 않는 구조라, 브라우저 콘솔과 GA4 양쪽에
+              // 원인 코드를 남겨 다음 진단의 단서로 삼는다. 계정은 성사됐으므로
+              // 흐름은 그대로 진행한다.
+              console.error('가입 인증 메일 발송 실패(가입은 성사됨):', mailErr);
+              trackEvent('signup_verification_email_failed', { reason: errorCode(mailErr) });
+            }
             // 가입에 쓴 수단(이메일)을 여기서 기록한다. 빠뜨리면
             // 가입 → 재방문 시 뱃지가 아무 데도 안 붙는다.
             rememberLastLoginMethod('email');
@@ -238,7 +263,43 @@ export const useAuthStore = create<AuthState>()(
             set({ user: isUnverifiedEmailUser(credential.user) ? null : credential.user, isLoading: false });
             return true;
           } catch (err) {
+            // 여기 도달하는 실패는 계정 생성(createUser) 단계다 — 이미 존재하는
+            // 이메일, 형식 오류, IP rate limit 등. 원인 코드를 GA4에 남긴다.
+            trackEvent('signup_failed', { reason: errorCode(err) });
             const message = getAuthErrorMessage(err, COPY.errors.signupFailed);
+            set({ error: message, isLoading: false });
+            return false;
+          }
+        },
+
+        resendVerificationEmail: async () => {
+          set({ isLoading: true, error: null });
+
+          if (isMockMode) {
+            await new Promise((resolve) => setTimeout(resolve, 500));
+            set({ isLoading: false });
+            return true;
+          }
+
+          try {
+            const currentUser = auth.currentUser;
+            // 세션이 없으면 보낼 대상이 없다. Step 3은 가입 직후라 세션이
+            // 살아 있는 것이 정상이지만, 만료·복원 실패에 대비해 확인한다.
+            if (!currentUser) {
+              set({ isLoading: false });
+              return false;
+            }
+
+            const { sendEmailVerification } = await import('firebase/auth');
+            await sendEmailVerification(currentUser);
+            set({ isLoading: false });
+            return true;
+          } catch (err) {
+            // 재발송도 rate limit(auth/too-many-requests)에 걸릴 수 있다 —
+            // 이때는 정확한 원인을 error에 담아 화면이 그대로 보여주게 하고,
+            // 같은 원인 코드를 GA4에도 남긴다.
+            trackEvent('verification_resend_failed', { reason: errorCode(err) });
+            const message = getAuthErrorMessage(err, COPY.errors.verifyResendFailed);
             set({ error: message, isLoading: false });
             return false;
           }

@@ -60,6 +60,14 @@ vi.mock('firebase/auth', () => ({
   deleteUser: vi.fn(),
 }));
 
+// GA4 계측 래퍼는 모킹해 호출만 관찰한다 — 실제 firebase/analytics 모듈이 jsdom에
+// 로드되는 것을 피하고, errorCode는 실제 구현을 그대로 통과시킨다(코드 추출 검증).
+const analyticsMocks = vi.hoisted(() => ({ trackEvent: vi.fn() }));
+vi.mock('../api/analytics', () => ({
+  trackEvent: analyticsMocks.trackEvent,
+  errorCode: (err: unknown) => (err as { code?: string })?.code ?? 'unknown',
+}));
+
 import { useAuthStore } from './useAuthStore';
 import { getLastLoginMethod } from '../utils/lastLoginMethod';
 import { COPY } from '../constants/copy';
@@ -81,6 +89,7 @@ const UNVERIFIED_USER = {
 beforeEach(() => {
   storage.clear();
   vi.clearAllMocks();
+  analyticsMocks.trackEvent.mockClear();
   mocks.auth.currentUser = null;
   mocks.syncUserToFirestore.mockResolvedValue(undefined);
   mocks.signOutUser.mockResolvedValue(undefined);
@@ -157,6 +166,83 @@ describe('이메일 회원가입의 마지막 수단 기록', () => {
 
     expect(ok).toBe(false);
     expect(getLastLoginMethod()).toBeNull();
+  });
+});
+
+// ─────────────────────────────────────────────────────
+// 인증 메일 발송 실패는 '가입 실패'가 아니다 (2026-09-02)
+//
+// createUserWithEmailAndPassword가 계정을 이미 만든 뒤 sendEmailVerification이
+// 실패하면(예: 인증 메일 rate limit, 인앱 브라우저 네트워크), 예전에는 catch로
+// 떨어져 가입 전체가 false가 됐다. 그러나 계정은 롤백되지 않으므로 "화면엔 실패,
+// 서버엔 고아 계정"이라는 모순이 남았다(김영원 선생님 신고 · users 문서는 정상
+// 생성되어 있었음). 메일 발송은 재발송으로 복구 가능한 별개 단계이므로, 가입
+// 성사 여부를 여기에 묶지 않는다.
+// ─────────────────────────────────────────────────────
+describe('인증 메일 발송 실패 처리', () => {
+  it('메일 발송이 실패해도 가입은 성공으로 처리하고 계정을 유지한다', async () => {
+    mocks.createUserWithEmailAndPassword.mockResolvedValue({ user: UNVERIFIED_USER });
+    mocks.sendEmailVerification.mockRejectedValue({ code: 'auth/too-many-requests' });
+
+    const ok = await useAuthStore.getState().registerWithEmail('ghost@b.com', 'pw');
+
+    // 계정은 이미 만들어졌다 → 가입은 성사, Step 3(인증 대기)으로 넘어간다
+    expect(ok).toBe(true);
+    expect(mocks.syncUserToFirestore).toHaveBeenCalledTimes(1);
+    expect(getLastLoginMethod()).toBe('email');
+    // 미인증이므로 앱 세션은 여전히 비운다 (기존 차단 계약 유지)
+    expect(useAuthStore.getState().user).toBeNull();
+    // 서버에 안 남는 실패를 GA4 이벤트로 남긴다 (원인 코드 포함)
+    expect(analyticsMocks.trackEvent).toHaveBeenCalledWith(
+      'signup_verification_email_failed',
+      { reason: 'auth/too-many-requests' }
+    );
+  });
+
+  it('계정 생성 실패는 signup_failed 이벤트로 남긴다', async () => {
+    mocks.createUserWithEmailAndPassword.mockRejectedValue({ code: 'auth/email-already-in-use' });
+
+    await useAuthStore.getState().registerWithEmail('a@b.com', 'pw');
+
+    expect(analyticsMocks.trackEvent).toHaveBeenCalledWith(
+      'signup_failed',
+      { reason: 'auth/email-already-in-use' }
+    );
+  });
+});
+
+// ─────────────────────────────────────────────────────
+// 인증 메일 재발송 — 발송이 실패했거나 유저가 메일을 못 받았을 때의 복구 창구.
+// Step 3(인증 대기)에서 호출한다. 세션은 살아 있으므로 auth.currentUser로 보낸다.
+// ─────────────────────────────────────────────────────
+describe('인증 메일 재발송', () => {
+  it('현재 세션 유저에게 인증 메일을 다시 보낸다', async () => {
+    mocks.auth.currentUser = { ...UNVERIFIED_USER };
+    mocks.sendEmailVerification.mockResolvedValue(undefined);
+
+    const ok = await useAuthStore.getState().resendVerificationEmail();
+
+    expect(ok).toBe(true);
+    expect(mocks.sendEmailVerification).toHaveBeenCalledTimes(1);
+  });
+
+  it('로그인된 세션이 없으면 보내지 않는다', async () => {
+    mocks.auth.currentUser = null;
+
+    const ok = await useAuthStore.getState().resendVerificationEmail();
+
+    expect(ok).toBe(false);
+    expect(mocks.sendEmailVerification).not.toHaveBeenCalled();
+  });
+
+  it('발송이 rate limit에 걸리면 정확한 원인 문구를 error에 담는다', async () => {
+    mocks.auth.currentUser = { ...UNVERIFIED_USER };
+    mocks.sendEmailVerification.mockRejectedValue({ code: 'auth/too-many-requests' });
+
+    const ok = await useAuthStore.getState().resendVerificationEmail();
+
+    expect(ok).toBe(false);
+    expect(useAuthStore.getState().error).toBe(COPY.errors.auth.tooManyRequests);
   });
 });
 

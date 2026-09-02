@@ -398,15 +398,31 @@ interface Step3Props {
 }
 
 function Step3({ email, onComplete, onBack, onClose }: Step3Props) {
-  const { checkEmailVerified, isLoading } = useAuthStore();
+  const { checkEmailVerified, resendVerificationEmail, isLoading } = useAuthStore();
   const [notice, setNotice] = useState<string | null>(null);
+  // 재발송 성공은 안내(info), 인증 미완료·재발송 실패는 경고(error)로 구분한다.
+  const [noticeTone, setNoticeTone] = useState<'info' | 'error'>('info');
 
   const handleVerify = async () => {
     const isVerified = await checkEmailVerified();
     if (isVerified) {
       onComplete();
     } else {
+      setNoticeTone('error');
       setNotice(COPY.signup.verifyIncomplete);
+    }
+  };
+
+  const handleResend = async () => {
+    const ok = await resendVerificationEmail();
+    if (ok) {
+      setNoticeTone('info');
+      setNotice(COPY.signup.resendSuccess);
+    } else {
+      // 재발송이 rate limit 등으로 막히면 스토어가 정확한 원인을 error에 담는다.
+      const reason = useAuthStore.getState().error;
+      setNoticeTone('error');
+      setNotice(reason || COPY.errors.verifyResendFailed);
     }
   };
   const step3Footer = (
@@ -459,7 +475,17 @@ function Step3({ email, onComplete, onBack, onClose }: Step3Props) {
             <p className="text-[12px] text-error font-body mt-4 font-bold">
               * 메일이 도착하지 않았다면 스팸 메일함을 꼭 확인해 주세요.
             </p>
-            <AlertDialog message={notice} tone="info" onClose={() => setNotice(null)} />
+            {/* 최초 발송이 실패했거나 메일이 오지 않았을 때의 복구 창구.
+                계정은 이미 만들어졌으므로 재발송만으로 인증을 이어갈 수 있다. */}
+            <button
+              type="button"
+              onClick={handleResend}
+              disabled={isLoading}
+              className="text-primary hover:text-primary-container transition-colors text-[14px] font-bold font-body underline underline-offset-4 disabled:opacity-50"
+            >
+              {COPY.signup.resendButton}
+            </button>
+            <AlertDialog message={notice} tone={noticeTone} onClose={() => setNotice(null)} />
           </div>
         </div>
       </div>
@@ -669,8 +695,13 @@ export default function SignupPage({ onBack, onComplete }: SignupPageProps) {
             if (success) {
               setStep(3); // Firebase 이메일 인증 단계로 이동
             } else {
-              // 에러 발생 시 Step 2에 머무름 (에러 표시는 useAuthStore의 error 상태로 처리 가능)
-              setNotice(COPY.signup.failed);
+              // 스토어가 이미 원인별 정확한 문구(예: '이미 가입된 이메일입니다…',
+              // '비정상적인 로그인 시도가 감지되었습니다…')를 error에 담아 두므로
+              // 그것을 우선 보여준다. 예전에는 이 값을 버리고 두루뭉술한 일반 문구만
+              // 띄워, 유저도 우리도 실패 원인을 구분할 수 없었다(신고의 한 원인).
+              // 서버에 실패 로그가 남지 않는 구조라, 이 문구가 사실상의 진단 정보다.
+              const reason = useAuthStore.getState().error;
+              setNotice(reason || COPY.signup.failed);
             }
           }}
           onBack={() => setStep(1)}
