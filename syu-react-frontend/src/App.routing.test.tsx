@@ -977,3 +977,38 @@ describe('복귀 재조회 — 다중 기기 동기화 완화 (N-5)', () => {
     expect(spies.fetchCharacter).not.toHaveBeenCalled();
   });
 });
+
+// ─────────────────────────────────────────────────────────
+describe('비로그인으로 보호 주소를 열면 — 튕긴 이유를 한 줄 알린다', () => {
+  it('#mypage로 직접 들어오면 랜딩 위에 로그인 안내 토스트가 뜬다', async () => {
+    prepareStores({ user: null as never, isLoading: false });
+    setHash('#mypage');
+    render(<App />);
+
+    expect(await screen.findByTestId('page-landing')).toBeInTheDocument();
+    expect(await screen.findByRole('status', { name: '로그인 안내' })).toHaveTextContent(
+      '로그인이 필요한 화면이에요',
+    );
+  });
+
+  it('쓰던 중 로그아웃해서 랜딩으로 온 것은 알리지 않는다', async () => {
+    setHash('#mypage');
+    render(<App />);
+    await screen.findByTestId('page-home');
+
+    await act(async () => {
+      useAuthStore.setState({ user: null, isLoading: false });
+    });
+
+    expect(await screen.findByTestId('page-landing')).toBeInTheDocument();
+    expect(screen.queryByRole('status', { name: '로그인 안내' })).not.toBeInTheDocument();
+  });
+
+  it('랜딩·로그인처럼 공개 주소로 들어오면 토스트가 없다', async () => {
+    prepareStores({ user: null as never, isLoading: false });
+    setHash('#landing');
+    render(<App />);
+    await screen.findByTestId('page-landing');
+    expect(screen.queryByRole('status', { name: '로그인 안내' })).not.toBeInTheDocument();
+  });
+});

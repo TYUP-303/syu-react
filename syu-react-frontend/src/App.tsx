@@ -18,6 +18,8 @@ import {
 import MobileWrapper from './components/MobileWrapper';
 import ConsentGate from './components/common/ConsentGate';
 import NoticeBanner from './components/common/NoticeBanner';
+import Toast from './components/ui/Toast';
+import { COPY } from './constants/copy';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
@@ -405,6 +407,13 @@ export default function App() {
     setCurrentPage(pending.page);
   }, []);
 
+  // 이 탭에서 로그인 세션이 있었던 적이 있는가. 아래 세션 가드가 "비로그인으로
+  // 직접 들어온 것"(안내할 일)과 "쓰다가 로그아웃한 것"(본인이 한 일)을 가르는
+  // 근거다 — 둘 다 user=null로 보호 주소에 서 있는 모양이라 그것만으로는 못 가른다.
+  const hadSessionRef = useRef(false);
+  const [loginRequiredNotice, setLoginRequiredNotice] = useState<string | null>(null);
+  const closeLoginRequiredNotice = useCallback(() => setLoginRequiredNotice(null), []);
+
   // Auth 상태 모니터링: 로그인 직후 자동 라우팅과 로그아웃 시 캐릭터 초기화.
   //
   // 로그아웃했을 때의 **이동**은 여기서 하지 않는다 — 아래 세션 가드가
@@ -412,6 +421,7 @@ export default function App() {
   // 이 이펙트가 다시 돌지 않기 때문이다.
   useEffect(() => {
     if (user) {
+      hadSessionRef.current = true;
       // 로그인된 경우 홈으로 자동 이동
       // (signup 뷰에 있을 때는 이메일 인증 등 후속 스텝 진행을 위해 자동 이동하지 않음)
       if (currentPage === 'landing' || currentPage === 'login') {
@@ -439,6 +449,9 @@ export default function App() {
     if (!requiresAuth(currentPage)) return;
     // 되돌리기 전에 어디로 가려 했는지 남긴다 (resumeAfterLogin 주석 참조).
     afterLoginRef.current = { page: currentPage, scenarioPath };
+    // 세션 없이 직접 들어온 경우에만 튕긴 이유를 한 줄 알린다. 예전에는 말없이
+    // 랜딩만 떠서 "링크가 깨졌나" 싶었다(2026-09-11 캡처 검수에서 확인).
+    if (!hadSessionRef.current) setLoginRequiredNotice(COPY.errors.loginRequiredToast);
     redirect('landing');
   }, [currentPage, scenarioPath, user, isLoading, redirect]);
 
@@ -654,6 +667,13 @@ export default function App() {
         <LandingPage
           onStart={() => navigate(user ? 'home' : 'login')}
           onProfileClick={() => navigate(user ? 'mypage' : 'login')}
+        />
+      )}
+      {currentPage === 'landing' && (
+        <Toast
+          message={loginRequiredNotice}
+          label={COPY.errors.loginRequiredToastLabel}
+          onClose={closeLoginRequiredNotice}
         />
       )}
 

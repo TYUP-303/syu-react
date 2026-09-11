@@ -486,6 +486,11 @@ export const COPY = {
       networkRequestFailed: '네트워크 연결이 불안정합니다. 인터넷 연결을 확인해 주세요.',
     },
 
+    // 비로그인으로 보호 주소(#mypage 등)에 들어와 랜딩으로 되돌린 뒤의 안내.
+    // 로그아웃으로 튕긴 경우에는 쓰지 않는다 — 본인이 한 일이라 알릴 것이 없다.
+    loginRequiredToast: '로그인이 필요한 화면이에요. 로그인하면 보던 화면으로 이어져요.',
+    loginRequiredToastLabel: '로그인 안내',
+
     // 인증 액션 실패 폴백
     loginFailed: '로그인 중 오류가 발생했습니다.',
     emailLoginFailed: '이메일 로그인 중 오류가 발생했습니다.',
