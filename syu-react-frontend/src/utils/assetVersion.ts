@@ -12,7 +12,9 @@
 // (얼굴 배율 재합성, UAT R3-07). 새로 추가된 환호 의상판 4장은 새 URL이라 이 값과
 // 무관하지만, 교체된 2장 때문에 올린다.
 // r15: boss_happy를 같은 이름으로 교체(가로 정렬 +11px·배율 재합성, UAT R3-07 추가 지적).
-export const SCENARIO_ASSET_VERSION = '20260827-r15';
+// 2026-09-11 r16: street_day png·webp를 같은 이름으로 교체 — 8/26에 깨진 한글 간판을
+// 블러로 가린 판을 버리고, street_night와 같은 골목의 낮 장면을 새로 생성한 판으로.
+export const SCENARIO_ASSET_VERSION = '20260911-r16';
 
 /** /scenario/** 이미지 URL에 캐시 버스터를 붙인다. */
 export function versionedAsset(url: string): string {
