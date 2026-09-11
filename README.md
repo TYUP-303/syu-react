@@ -26,12 +26,18 @@
 > **이 서비스는 임상 진단·치료 도구가 아니다.** 검사 결과는 *경향*이며, 화면에도 그렇게 안내한다.
 
 <p align="center">
-  <img src="docs/images/screens/landing.png" width="23%" alt="랜딩 — 서비스 소개와 시작 버튼">
-  <img src="docs/images/screens/player-fairies.png" width="23%" alt="시나리오 플레이어 — 요정 셋 중 전략을 고르는 장면">
-  <img src="docs/images/screens/type-report.png" width="23%" alt="유형 보고서 — 종합 진단과 도움 체감도">
-  <img src="docs/images/screens/diary-album.png" width="23%" alt="회복일기 — 네 영역 완주 앨범">
+  <img src="docs/images/screens/top-01-landing.png" width="23%" alt="랜딩 — 체험형 시나리오 소개와 영역 카드">
+  <img src="docs/images/screens/top-02-test-prep.png" width="23%" alt="ADHD 경향 검사 안내">
+  <img src="docs/images/screens/top-03-home.png" width="23%" alt="홈 — 마음 건강 여정 단계">
+  <img src="docs/images/screens/top-04-scenario-themes.png" width="23%" alt="시나리오 영역 선택">
 </p>
-<p align="center"><sub>iPhone 17 화면(402×874). 더 많은 화면은 <a href="docs/screenshots.md">docs/screenshots.md</a>.</sub></p>
+<p align="center">
+  <img src="docs/images/screens/top-05-player-scene.png" width="23%" alt="시나리오 장면 — 백설이와 팀장">
+  <img src="docs/images/screens/top-06-player-fairies.png" width="23%" alt="요정 셋의 조언을 모두 읽고 전략을 고르는 장면">
+  <img src="docs/images/screens/top-07-diary-detail.png" width="23%" alt="회복일기 — 도움이 된 이유와 작은 실천 제안">
+  <img src="docs/images/screens/top-08-ending-credits.png" width="23%" alt="엔딩 크레딧">
+</p>
+<p align="center"><sub>iPhone 17 화면(402×874), 진행 순서대로. 더 많은 화면은 <a href="docs/screenshots.md">docs/screenshots.md</a>.</sub></p>
 
 ## 목차
 
@@ -113,12 +119,6 @@ WHO 성인 ADHD 자가보고 척도(ASRS v1.1; Kessler et al., 2005) Part A 6문
 | **Express** 표현하기 | 요정 선택 → 전략 조언 | 세 전략 중 지금 상황에 써 볼 것을 고르고 요정의 구체적 조언을 읽음 |
 | **Adapt** 적응하기 | 적용 장면 → 도움 평가 → 회복일기·보고서 → 에필로그 | 전략을 적용한 결과를 보고 평가하며 기록이 쌓이면 자기 패턴을 확인 |
 
-<p align="center">
-  <img src="docs/images/screens/test-adhd-result.png" width="31%" alt="Recognize — ADHD 경향 검사 결과">
-  <img src="docs/images/screens/player-angel-accept.png" width="31%" alt="Express — 요정 아코의 수용 전략 조언">
-  <img src="docs/images/screens/diary-detail.png" width="31%" alt="Adapt — 영역별 회복일기 상세">
-</p>
-
 ```mermaid
 flowchart TB
     subgraph R[Recognize · 알아차리기]
@@ -158,12 +158,6 @@ flowchart TB
 1. **검사 2종** — ADHD 경향(ASRS v1.1 6문항)과 스트레스 반응 기제(인지·정서·행동 12문항).
 2. **시나리오 40편 + 에필로그 4편** — 영역별 10편, 4장면. 요정 셋의 전략 중 하나를 고르고 적용 뒤 장면을 보고 평가.
 3. **회복일기·보고서** — 영역별 기록, 정서 대응 프로필, 종합 인사이트.
-
-<p align="center">
-  <img src="docs/images/screens/test-stress-result.png" width="31%" alt="스트레스 대처기제 검사 결과 — 인지형">
-  <img src="docs/images/screens/player-street-day.png" width="31%" alt="시나리오 — 낮 거리에서 친구와 함께 선 장면">
-  <img src="docs/images/screens/diary-comprehensive.png" width="31%" alt="종합 인사이트 — 도움이 된 이유 랭킹">
-</p>
 
 ## 기술 스택
 
