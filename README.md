@@ -1,5 +1,13 @@
 # SYU-REACT
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+![React 19](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![TypeScript 6](https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&logoColor=white)
+![Vite 8](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)
+![Firebase 12](https://img.shields.io/badge/Firebase-12-FFCA28?logo=firebase&logoColor=black)
+![tests](https://img.shields.io/badge/tests-1100%20passing-brightgreen)
+[![Firebase Hosting](https://img.shields.io/badge/live-syu--react.web.app-1e63d6)](https://syu-react.web.app)
+
 **REACT**는 **Recognize – Express – Adapt Coping Tool**의 약자이다. 스트레스 상황에서 자기 반응을
 **알아차리고**(Recognize), 감정을 **표현하고**(Express), 상황에 맞는 대처 전략으로 **적응**(Adapt)하는 과정을
 연습하도록 돕는 웹 서비스다. ADHD 경향이 있는 대학생을 첫 사용자로 두고 설계했다.
@@ -16,6 +24,28 @@
 > MIT 대상이 아니며 `NOTICE.md`의 권리 고지를 따른다.
 
 > **이 서비스는 임상 진단·치료 도구가 아니다.** 검사 결과는 *경향*이며, 화면에도 그렇게 안내한다.
+
+<p align="center">
+  <img src="docs/images/screens/landing.png" width="23%" alt="랜딩 — 서비스 소개와 시작 버튼">
+  <img src="docs/images/screens/player-fairies.png" width="23%" alt="시나리오 플레이어 — 요정 셋 중 전략을 고르는 장면">
+  <img src="docs/images/screens/type-report.png" width="23%" alt="유형 보고서 — 종합 진단과 도움 체감도">
+  <img src="docs/images/screens/diary-album.png" width="23%" alt="회복일기 — 네 영역 완주 앨범">
+</p>
+<p align="center"><sub>iPhone 17 화면(402×874). 더 많은 화면은 <a href="docs/screenshots.md">docs/screenshots.md</a>.</sub></p>
+
+## 목차
+
+- [기획 배경](#기획-배경)
+- [심리학적 기반](#심리학적-기반)
+- [서비스 흐름 — REACT 세 단계](#서비스-흐름--react-세-단계)
+- [개발·검증 방법](#개발검증-방법)
+- [주요 기능 (요약)](#주요-기능-요약)
+- [기술 스택](#기술-스택)
+- [실행하기](#실행하기)
+- [저장소(Repository) 구성](#저장소repository-구성)
+- [검사 도구 출처](#검사-도구-출처)
+- [참고문헌](#참고문헌)
+- [만든 사람들](#만든-사람들)
 
 ## 기획 배경
 
@@ -83,6 +113,12 @@ WHO 성인 ADHD 자가보고 척도(ASRS v1.1; Kessler et al., 2005) Part A 6문
 | **Express** 표현하기 | 요정 선택 → 전략 조언 | 세 전략 중 지금 상황에 써 볼 것을 고르고 요정의 구체적 조언을 읽음 |
 | **Adapt** 적응하기 | 적용 장면 → 도움 평가 → 회복일기·보고서 → 에필로그 | 전략을 적용한 결과를 보고 평가하며 기록이 쌓이면 자기 패턴을 확인 |
 
+<p align="center">
+  <img src="docs/images/screens/test-adhd-result.png" width="31%" alt="Recognize — ADHD 경향 검사 결과">
+  <img src="docs/images/screens/player-angel-accept.png" width="31%" alt="Express — 요정 아코의 수용 전략 조언">
+  <img src="docs/images/screens/diary-detail.png" width="31%" alt="Adapt — 영역별 회복일기 상세">
+</p>
+
 ```mermaid
 flowchart TB
     subgraph R[Recognize · 알아차리기]
@@ -122,6 +158,12 @@ flowchart TB
 1. **검사 2종** — ADHD 경향(ASRS v1.1 6문항)과 스트레스 반응 기제(인지·정서·행동 12문항).
 2. **시나리오 40편 + 에필로그 4편** — 영역별 10편, 4장면. 요정 셋의 전략 중 하나를 고르고 적용 뒤 장면을 보고 평가.
 3. **회복일기·보고서** — 영역별 기록, 정서 대응 프로필, 종합 인사이트.
+
+<p align="center">
+  <img src="docs/images/screens/test-stress-result.png" width="31%" alt="스트레스 대처기제 검사 결과 — 인지형">
+  <img src="docs/images/screens/player-street-day.png" width="31%" alt="시나리오 — 낮 거리에서 친구와 함께 선 장면">
+  <img src="docs/images/screens/diary-comprehensive.png" width="31%" alt="종합 인사이트 — 도움이 된 이유 랭킹">
+</p>
 
 ## 기술 스택
 
